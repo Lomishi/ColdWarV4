@@ -3,6 +3,7 @@ public class Planeta {
 	private int vidas;
 	private int misilesR;
 	private String nombre;
+	private int misilesP;
 	private static int numeroequipos;
 	private int defensa;
 
@@ -10,6 +11,7 @@ public class Planeta {
 
 		this.vidas = 200;
 		this.misilesR = 0;
+		this.misilesP = 50;
 		this.nombre = nombre;
 
 		numeroequipos++;
@@ -34,9 +36,15 @@ public class Planeta {
 		this.misilesR = misilesR;
 	}
 
-	public String getNombre() {
+	public int getMisilesP() {
+		return misilesP;
+	}
 
-		nombre = setNombre(nombre);
+	public void setMisilesP(int misilesP) {
+		this.misilesP = misilesP;
+	}
+
+	public String getNombre() {
 
 		return nombre;
 
@@ -58,6 +66,13 @@ public class Planeta {
 		Planeta.numeroequipos = numeroequipos;
 	}
 
+	public int lanzadera(int misileslanzadera) {
+
+		misilesP = misileslanzadera;
+
+		return misilesP;
+	}
+
 	public int mi(int misiles) {
 
 		misilesR = misilesR + misiles;
@@ -74,20 +89,24 @@ public class Planeta {
 
 	public int calculo() {
 
-		
 		if (misilesR > defensa) {
 
 			defensa = defensa - misilesR;
 			vidas = vidas + defensa;
-			
+
+			defensa = 0;
+			misilesR = 0;
 			return vidas;
 		}
 
 		else if (misilesR <= defensa) {
-			
+
+			defensa = 0;
+			misilesR = 0;
 			return vidas;
 
 		}
+		System.out.println(misilesR + "ha dejado" + vidas);
 
 		return vidas;
 	}

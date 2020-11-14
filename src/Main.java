@@ -62,8 +62,6 @@ public class Main {
 
 			case 5:
 				System.out.println("Adios master.");
-				
-				
 
 				break;
 			}
